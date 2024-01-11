@@ -70,14 +70,22 @@ extension_services:
             ui.advisory.color: blue
             ui.advisory.text: "Provisioned via Runtime Init and DO"
           My_Provisioning:
-            asm: nominal
             class: Provision
-            ltm: nominal
+            ltm: none
+            asm: nominal
           My_Ntp:
             class: NTP
             servers:
               - 169.254.169.253
             timezone: UTC
+          admin:
+            class: User
+            userType: regular
+            partitionAccess:
+              all-partitions:
+                role: admin
+            shell: tmsh
+            password: admin
           My_Dns:
             class: DNS
             nameServers:
