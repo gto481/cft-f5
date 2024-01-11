@@ -85,7 +85,7 @@ extension_services:
               all-partitions:
                 role: admin
             shell: tmsh
-            password: admin
+            password: Admin@F5!!
           My_Dns:
             class: DNS
             nameServers:
@@ -125,13 +125,10 @@ extension_services:
               class: Pool
               remark: Service 1 shared pool
               members:
-                - servicePort: 80
-                  addressDiscovery: aws
-                  region: '{{{REGION}}}'
-                  updateInterval: 60
-                  tagKey: 'aws:cloudformation:logical-id'
-                  tagValue: appAutoscaleGroup
-                  addressRealm: private
+                - servicePort: 9090
+                  enable: true
+                  serverAddresses:
+                    - 10.0.0.46
               monitors:
                 - http
             telemetry_local_rule:
